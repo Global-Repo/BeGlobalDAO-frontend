@@ -103,7 +103,7 @@ function ZapInfo({ tokens, address }) {
                 <Trans>All-in-one easy staking</Trans>
               </Typography>
               <Typography align="left" variant="body2" className="oly-info-body">
-                <Trans>OlyZap reduces complexity, saves you time and keeps you here on Olympus.</Trans>
+                <Trans>OlyZap reduces complexity, saves you time and keeps you here on BeGlobal.</Trans>
               </Typography>
             </Box>
           </Grid>
@@ -121,7 +121,7 @@ function ZapInfo({ tokens, address }) {
                 ]}
               />
               <Typography color="textSecondary" align="center">
-                <Trans>You Get sOHM</Trans>{" "}
+                <Trans>You Get sGLBD</Trans>{" "}
               </Typography>
             </Box>
             <Box classes={{ root: classes.infoBody }}>
@@ -130,8 +130,8 @@ function ZapInfo({ tokens, address }) {
               </Typography>
               <Typography align="left" variant="body2" className="oly-info-body">
                 <Trans>
-                  Staking is the primary value accrual strategy of Olympus. When you stake, you lock OHM and receive an
-                  equal amount of sOHM.
+                  Staking is the primary value accrual strategy of BeGlobal. When you stake, you lock GLBD and receive
+                  an equal amount of sGLBD.
                 </Trans>
               </Typography>
             </Box>

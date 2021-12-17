@@ -1,8 +1,8 @@
 {
-  "short_name": "OlympusDAO",
+  "short_name": "BeGlobalDAO",
   "start_url": ".",
   "homepage": "./",
-  "name": "OlympusDAO",
+  "name": "BeGlobalDAO",
   "launch_path": "/public/index.html",
   "icons": [
     {
