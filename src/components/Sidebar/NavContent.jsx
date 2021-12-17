@@ -80,7 +80,7 @@ function NavContent() {
             <div className="dapp-nav" id="navbarNav">
               {networkId === 1 || networkId === 4 ? (
                 <>
-                  <Link
+                  {/* <Link
                     component={NavLink}
                     id="dash-nav"
                     to="/dashboard"
@@ -93,7 +93,7 @@ function NavContent() {
                       <SvgIcon color="primary" component={DashboardIcon} />
                       <Trans>Dashboard</Trans>
                     </Typography>
-                  </Link>
+                  </Link> */}
 
                   <Link
                     component={NavLink}
@@ -110,7 +110,7 @@ function NavContent() {
                     </Typography>
                   </Link>
 
-                  <Link
+                  {/* <Link
                     component={NavLink}
                     id="wrap-nav"
                     to="/wrap"
@@ -121,13 +121,12 @@ function NavContent() {
                   >
                     <Box display="flex" alignItems="center">
                       <SvgIcon component={WrapIcon} color="primary" viewBox="1 0 20 22" />
-                      {/* <WrapIcon /> */}
-                      <Typography variant="h6">Wrap</Typography>
-                      {/* <SvgIcon component={WrapIcon} viewBox="21 -2 20 20" style={{ width: "80px" }} /> */}
-                    </Box>
-                  </Link>
 
-                  <Link
+                      <Typography variant="h6">Wrap</Typography>
+                    </Box>
+                  </Link> */}
+
+                  {/* <Link
                     href={"https://synapseprotocol.com/?inputCurrency=gOHM&outputCurrency=gOHM&outputChain=43114"}
                     target="_blank"
                   >
@@ -136,7 +135,7 @@ function NavContent() {
                       <Trans>Bridge</Trans>
                       <SvgIcon style={{ marginLeft: "5px" }} component={ArrowUpIcon} />
                     </Typography>
-                  </Link>
+                  </Link> */}
 
                   <Link
                     component={NavLink}
@@ -188,7 +187,7 @@ function NavContent() {
                       })}
                     </div>
                   </div>
-                  <Box className="menu-divider">
+                  {/* <Box className="menu-divider">
                     <Divider />
                   </Box>
                   <Link
@@ -220,7 +219,7 @@ function NavContent() {
                       <SvgIcon color="primary" component={PoolTogetherIcon} />
                       3,3 Together
                     </Typography>
-                  </Link>
+                  </Link>*/}
                   <Box className="menu-divider">
                     <Divider />
                   </Box>
@@ -238,9 +237,8 @@ function NavContent() {
                   >
                     <Box display="flex" alignItems="center">
                       <SvgIcon component={WrapIcon} color="primary" viewBox="1 0 20 22" />
-                      {/* <WrapIcon /> */}
+
                       <Typography variant="h6">Wrap</Typography>
-                      {/* <SvgIcon component={WrapIcon} viewBox="21 -2 20 20" style={{ width: "80px" }} /> */}
                     </Box>
                   </Link>
 
