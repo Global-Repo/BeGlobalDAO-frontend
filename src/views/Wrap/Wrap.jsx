@@ -112,8 +112,9 @@ function Wrap() {
   const avax = NETWORKS[43114];
   const arbitrum = NETWORKS[42161];
   const ethereum = NETWORKS[1];
+  const bsc = NETWORKS[(56, 97)];
 
-  const isAvax = useMemo(() => networkId != 1 && networkId != 4, [networkId]);
+  const isAvax = useMemo(() => networkId != 56 && networkId != 97, [networkId]);
   useEffect(() => {
     if (isAvax) {
       setAssetFrom("wsOHM");
@@ -559,12 +560,12 @@ function Wrap() {
                         <Divider />
                         <Box width="100%" align="center" p={1}>
                           <Typography variant="h6" style={{ margin: "15px 0 10px 0" }}>
-                            Back to Ethereum Mainnet
+                            Back to BSC Mainnet
                           </Typography>
                           <Button onClick={handleSwitchChain(1)} variant="outlined" p={1}>
-                            <img height="28px" width="28px" src={ethereum.image} alt={ethereum.imageAltText} />
+                            <img height="28px" width="28px" src={bsc.image} alt={bsc.imageAltText} />
                             <Typography variant="h6" style={{ marginLeft: "8px" }}>
-                              {ethereum.chainName}
+                              {bsc.chainName}
                             </Typography>
                           </Button>
                         </Box>

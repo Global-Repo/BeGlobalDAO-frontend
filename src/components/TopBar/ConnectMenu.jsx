@@ -43,10 +43,10 @@ function ConnectMenu({ theme }) {
 
   const getEtherscanUrl = txnHash => {
     switch (networkId) {
-      case 1:
-        return "https://etherscan.io/tx/" + txnHash;
-      case 4:
-        return "https://rinkeby.etherscan.io/tx/" + txnHash;
+      case 56:
+        return "https://bscscan.com/tx/" + txnHash;
+      case 97:
+        return "https://testnet.bscscan.com/tx/" + txnHash;
       case 42161:
         return "https://explorer.arbitrum.io/tx/" + txnHash;
       case 421611:

@@ -47,7 +47,7 @@ export class EnvHelper {
 
     // If in production, split the provided API keys on whitespace. Otherwise use default.
     switch (networkId) {
-      case 1:
+      case 56:
         if (
           EnvHelper.env.NODE_ENV !== "development" &&
           EnvHelper.env.REACT_APP_ETHEREUM_ALCHEMY_IDS &&
@@ -55,20 +55,20 @@ export class EnvHelper {
         ) {
           ALCHEMY_ID_LIST = EnvHelper.env.REACT_APP_ETHEREUM_ALCHEMY_IDS.split(EnvHelper.whitespaceRegex);
         } else {
-          ALCHEMY_ID_LIST = ["_gg7wSSi0KMBsdKnGVfHDueq6xMB9EkC"];
+          ALCHEMY_ID_LIST = ["GU38I82Y86NWHD3UEQPE9V8B9K6PJBKCWI"];
         }
-        uriPath = "https://eth-mainnet.alchemyapi.io/v2/";
+        uriPath = "https://dex.binance.org/api/v1/time"; // "https://eth-mainnet.alchemyapi.io/v2/";
         break;
-      case 4:
+      case 97:
         if (
           EnvHelper.env.REACT_APP_ETHEREUM_TESTNET_ALCHEMY &&
           EnvHelper.isNotEmpty(EnvHelper.env.REACT_APP_ETHEREUM_TESTNET_ALCHEMY)
         ) {
           ALCHEMY_ID_LIST = EnvHelper.env.REACT_APP_ETHEREUM_TESTNET_ALCHEMY.split(EnvHelper.whitespaceRegex);
         } else {
-          ALCHEMY_ID_LIST = ["aF5TH9E9RGZwaAUdUd90BNsrVkDDoeaO"];
+          ALCHEMY_ID_LIST = ["GU38I82Y86NWHD3UEQPE9V8B9K6PJBKCWI"];
         }
-        uriPath = "https://eth-rinkeby.alchemyapi.io/v2/";
+        uriPath = "https://testnet-dex.binance.org/api/v1/time"; // "https://eth-rinkeby.alchemyapi.io/v2/";
         break;
       case 42161:
         if (

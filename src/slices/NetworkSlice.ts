@@ -21,12 +21,12 @@ export const initializeNetwork = createAsyncThunk(
       const id: number = await provider.getNetwork().then(network => network.chainId);
 
       switch (id) {
-        case 1:
-          networkName = "Ethereum";
+        case 56:
+          networkName = "BSC";
           uri = NodeHelper.getMainnetURI(id);
           break;
-        case 4:
-          networkName = "Rinkeby Testnet";
+        case 97:
+          networkName = "BSC Testnet";
           uri = NodeHelper.getMainnetURI(id);
           break;
         case 42161:

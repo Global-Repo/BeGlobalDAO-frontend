@@ -9,8 +9,8 @@ import { addresses } from "src/constants";
 import React from "react";
 
 export enum NetworkID {
-  Mainnet = 1,
-  Testnet = 4,
+  Mainnet = 56,
+  Testnet = 97,
   Arbitrum = 42161,
   ArbitrumTestnet = 421611,
   AvalancheTestnet = 43113,

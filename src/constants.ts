@@ -1,6 +1,7 @@
 import { NodeHelper } from "./helpers/NodeHelper";
 import { EnvHelper } from "./helpers/Environment";
 import ethereum from "./assets/tokens/wETH.svg";
+import bsc from "./assets/BSC.svg";
 import arbitrum from "./assets/arbitrum.png";
 import avalanche from "./assets/tokens/AVAX.svg";
 
@@ -17,8 +18,8 @@ interface IPoolGraphURLS {
 }
 
 export const POOL_GRAPH_URLS: IPoolGraphURLS = {
-  4: "https://api.thegraph.com/subgraphs/name/pooltogether/rinkeby-v3_4_3",
-  1: "https://api.thegraph.com/subgraphs/name/pooltogether/pooltogether-v3_4_3",
+  97: "https://api.thegraph.com/subgraphs/name/pooltogether/rinkeby-v3_4_3",
+  56: "https://api.thegraph.com/subgraphs/name/pooltogether/pooltogether-v3_4_3",
 };
 
 interface IAddresses {
@@ -26,32 +27,32 @@ interface IAddresses {
 }
 
 export const addresses: IAddresses = {
-  4: {
-    DAI_ADDRESS: "0xB2180448f8945C8Cc8AE9809E67D6bd27d8B2f2C", // duplicate
-    OHM_ADDRESS: "0xC0b491daBf3709Ee5Eb79E603D73289Ca6060932",
-    STAKING_ADDRESS: "0xC5d3318C0d74a72cD7C55bdf844e24516796BaB2",
-    STAKING_HELPER_ADDRESS: "0xf73f23Bb0edCf4719b12ccEa8638355BF33604A1",
-    OLD_STAKING_ADDRESS: "0xb640AA9082ad720c60102489b806E665d67DCE32",
-    SOHM_ADDRESS: "0x1Fecda1dE7b6951B248C0B62CaeBD5BAbedc2084",
-    WSOHM_ADDRESS: "0xe73384f11Bb748Aa0Bc20f7b02958DF573e6E2ad",
-    OLD_SOHM_ADDRESS: "0x8Fc4167B0bdA22cb9890af2dB6cB1B818D6068AE",
-    MIGRATE_ADDRESS: "0x3BA7C6346b93DA485e97ba55aec28E8eDd3e33E2",
-    DISTRIBUTOR_ADDRESS: "0x0626D5aD2a230E05Fb94DF035Abbd97F2f839C3a",
-    BONDINGCALC_ADDRESS: "0xaDBE4FA3c2fcf36412D618AfCfC519C869400CEB",
-    CIRCULATING_SUPPLY_ADDRESS: "0x5b0AA7903FD2EaA16F1462879B71c3cE2cFfE868",
-    TREASURY_ADDRESS: "0x0d722D813601E48b7DAcb2DF9bae282cFd98c6E7",
-    REDEEM_HELPER_ADDRESS: "0xBd35d8b2FDc2b720842DB372f5E419d39B24781f",
-    PT_TOKEN_ADDRESS: "0x0a2d026bacc573a8b5a2b049f956bdf8e5256cfd", // 33T token address, taken from `ticket` function on PRIZE_STRATEGY_ADDRESS
-    PT_PRIZE_POOL_ADDRESS: "0xf9081132864ed5e4980CFae83bDB122d86619281", // NEW
-    PT_PRIZE_STRATEGY_ADDRESS: "0x2Df17EA8D6B68Ec444c9a698315AfB36425dac8b", // NEW
-    MIGRATOR_ADDRESS: "0x568c257BF4714864382b643fC8e6Ce5fbBcC6d3C",
-    GOHM_ADDRESS: "0xcF2D6893A1CB459fD6B48dC9C41c6110B968611E",
-    OHM_V2: "0xd7B98050962ec7cC8D11a83446B3217257C754B7",
-    TREASURY_V2: "0x8dd0d811CEFb5CF41528C495E76638B2Ea39d2e6",
-    SOHM_V2: "0xebED323CEbe4FfF65F7D7612Ea04313F718E5A75",
-    STAKING_V2: "0x06984c3A9EB8e3A8df02A4C09770D5886185792D",
+  97: {
+    DAI_ADDRESS: "0x7B1A48dC01Be3Bf55AB6e145baEF5293F3158127", //BUSD_ADDRESS "0xB2180448f8945C8Cc8AE9809E67D6bd27d8B2f2C", // duplicate
+    OHM_ADDRESS: "0x1B0d3B82B9a0fa1F75832eeF18ab97682A960fb4", //GLBD_ADDRESS "0xC0b491daBf3709Ee5Eb79E603D73289Ca6060932",
+    STAKING_ADDRESS: "0x94884033F47967fA27ad5bBC6AD1572c56Df1742", //"0xC5d3318C0d74a72cD7C55bdf844e24516796BaB2",
+    STAKING_HELPER_ADDRESS: "0xAd7aB18aAF57Ced0c0F5f6cFF74BA666B2fA3eDD", //"0xf73f23Bb0edCf4719b12ccEa8638355BF33604A1",
+    OLD_STAKING_ADDRESS: "0x94884033F47967fA27ad5bBC6AD1572c56Df1742", //"0xb640AA9082ad720c60102489b806E665d67DCE32",
+    SOHM_ADDRESS: "0x2292E347cd6c37060453295e654427b2fe29F44D", //SGLBD_ADDRESS "0x1Fecda1dE7b6951B248C0B62CaeBD5BAbedc2084",
+    WSOHM_ADDRESS: "", //"0xe73384f11Bb748Aa0Bc20f7b02958DF573e6E2ad",
+    OLD_SOHM_ADDRESS: "0x2292E347cd6c37060453295e654427b2fe29F44D", //SGLBD_ADDRESS "0x8Fc4167B0bdA22cb9890af2dB6cB1B818D6068AE",
+    MIGRATE_ADDRESS: "", //"0x3BA7C6346b93DA485e97ba55aec28E8eDd3e33E2",
+    DISTRIBUTOR_ADDRESS: "0x7955C29238CB855A10b6742d0A936d04B80ec182", //"0x0626D5aD2a230E05Fb94DF035Abbd97F2f839C3a",
+    BONDINGCALC_ADDRESS: "0xB75Ca45fe7ae3adadedE302319B293edc8Fa5867", //"0xaDBE4FA3c2fcf36412D618AfCfC519C869400CEB",
+    CIRCULATING_SUPPLY_ADDRESS: "", //"0x5b0AA7903FD2EaA16F1462879B71c3cE2cFfE868",
+    TREASURY_ADDRESS: "0xEeF45c204E4ADc9fd1431960c33E7cf1bD63B237", //"0x0d722D813601E48b7DAcb2DF9bae282cFd98c6E7",
+    REDEEM_HELPER_ADDRESS: "0xCd9bc1Fe40d960B7F2680f5d52c6141a71b162F3", //"0xBd35d8b2FDc2b720842DB372f5E419d39B24781f",
+    PT_TOKEN_ADDRESS: "", //"0x0a2d026bacc573a8b5a2b049f956bdf8e5256cfd", // 33T token address, taken from `ticket` function on PRIZE_STRATEGY_ADDRESS
+    PT_PRIZE_POOL_ADDRESS: "", //"0xf9081132864ed5e4980CFae83bDB122d86619281", // NEW
+    PT_PRIZE_STRATEGY_ADDRESS: "", //"0x2Df17EA8D6B68Ec444c9a698315AfB36425dac8b", // NEW
+    MIGRATOR_ADDRESS: "", //"0x568c257BF4714864382b643fC8e6Ce5fbBcC6d3C",
+    GOHM_ADDRESS: "", //"0xcF2D6893A1CB459fD6B48dC9C41c6110B968611E",
+    OHM_V2: "", //"0xd7B98050962ec7cC8D11a83446B3217257C754B7",
+    TREASURY_V2: "", //"0x8dd0d811CEFb5CF41528C495E76638B2Ea39d2e6",
+    SOHM_V2: "", //"0xebED323CEbe4FfF65F7D7612Ea04313F718E5A75",
+    STAKING_V2: "", //"0x06984c3A9EB8e3A8df02A4C09770D5886185792D",
   },
-  1: {
+  56: {
     DAI_ADDRESS: "0x6b175474e89094c44da98b954eedeac495271d0f", // duplicate
     OHM_ADDRESS: "0x383518188c0c6d7730d91b2c03a03c837814a899",
     STAKING_ADDRESS: "0xfd31c7d00ca47653c6ce64af53c1571f9c36566a", // The new staking contract
@@ -187,40 +188,40 @@ interface INetwork {
 
 // These networks will be available for users to select. Other networks may be functional
 // (e.g. testnets, or mainnets being prepared for launch) but need to be selected directly via the wallet.
-export const USER_SELECTABLE_NETWORKS = [1, 42161, 43114];
+export const USER_SELECTABLE_NETWORKS = [97];
 
 // Set this to the chain number of the most recently added network in order to enable the 'Now supporting X network'
 // message in the UI. Set to -1 if we don't want to display the message at the current time.
 export const NEWEST_NETWORK_ID = 43114;
 
 export const NETWORKS: { [key: number]: INetwork } = {
-  1: {
-    chainName: "Ethereum",
-    chainId: 1,
+  56: {
+    chainName: "BSC",
+    chainId: 56,
     nativeCurrency: {
-      name: "Ethereum",
-      symbol: "ETH",
+      name: "BNB Token",
+      symbol: "BNB",
       decimals: 18,
     },
-    rpcUrls: [""],
-    blockExplorerUrls: ["https://etherscan.io/#/"],
-    image: ethereum,
-    imageAltText: "Ethereum Logo",
-    uri: () => NodeHelper.getMainnetURI(1),
+    rpcUrls: ["https://bsc-dataseed.binance.org/"],
+    blockExplorerUrls: ["https://bscscan.com"],
+    image: bsc,
+    imageAltText: "BSC Logo",
+    uri: () => NodeHelper.getMainnetURI(56),
   },
-  4: {
-    chainName: "Rinkeby Testnet",
-    chainId: 4,
+  97: {
+    chainName: "BSC Testnet",
+    chainId: 97,
     nativeCurrency: {
-      name: "Ethereum",
-      symbol: "ETH",
+      name: "BNB Token",
+      symbol: "BNB",
       decimals: 18,
     },
-    rpcUrls: [""],
-    blockExplorerUrls: ["https://rinkeby.etherscan.io/#/"],
-    image: ethereum,
-    imageAltText: "Ethereum Logo",
-    uri: () => NodeHelper.getMainnetURI(4),
+    rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
+    blockExplorerUrls: ["https://testnet.bscscan.com"],
+    image: bsc,
+    imageAltText: "BSC Logo",
+    uri: () => NodeHelper.getMainnetURI(97),
   },
   42161: {
     chainName: "Arbitrum",
@@ -294,20 +295,20 @@ interface IViewsForNetwork {
 }
 
 export const VIEWS_FOR_NETWORK: { [key: number]: IViewsForNetwork } = {
-  1: {
+  56: {
     dashboard: true,
     stake: true,
-    wrap: true,
-    zap: true,
+    wrap: false,
+    zap: false,
     threeTogether: true,
     bonds: true,
     network: true,
   },
-  4: {
+  97: {
     dashboard: true,
     stake: true,
-    wrap: true,
-    zap: true,
+    wrap: false,
+    zap: false,
     threeTogether: true,
     bonds: true,
     network: true,
