@@ -6,6 +6,7 @@ import { ReactComponent as StakeIcon } from "../../assets/icons/stake.svg";
 import { ReactComponent as BondIcon } from "../../assets/icons/bond.svg";
 import { ReactComponent as DashboardIcon } from "../../assets/icons/dashboard.svg";
 import { ReactComponent as OlympusIcon } from "../../assets/icons/olympus-nav-header.svg";
+import { ReactComponent as BeGlobalLogoIcon } from "../../assets/icons/beGlobalLogo.svg";
 import { ReactComponent as PoolTogetherIcon } from "../../assets/icons/33-together.svg";
 import { ReactComponent as ZapIcon } from "../../assets/icons/zap.svg";
 import { ReactComponent as NewIcon } from "../../assets/icons/new-icon.svg";
@@ -58,18 +59,18 @@ function NavContent() {
       <Box className="dapp-sidebar-inner" display="flex" justifyContent="space-between" flexDirection="column">
         <div className="dapp-menu-top">
           <Box className="branding-header">
-            <Link href="https://olympusdao.finance" target="_blank">
+            <Link href="https://beglobal.finance" target="_blank">
               <SvgIcon
                 color="primary"
-                component={OlympusIcon}
-                viewBox="0 0 151 100"
-                style={{ minWdth: "151px", minHeight: "98px", width: "151px" }}
+                component={BeGlobalLogoIcon}
+                viewBox="0 0 1271 1272"
+                style={{ minWdth: "150px", minHeight: "98px", width: "150px" }}
               />
             </Link>
 
             {address && (
               <div className="wallet-link">
-                <Link href={`https://etherscan.io/address/${address}`} target="_blank">
+                <Link href={`https://bscscan.com//address/${address}`} target="_blank">
                   {shorten(address)}
                 </Link>
               </div>
@@ -78,9 +79,9 @@ function NavContent() {
 
           <div className="dapp-menu-links">
             <div className="dapp-nav" id="navbarNav">
-              {networkId === 1 || networkId === 4 ? (
-                <>
-                  <Link
+              {/* {networkId === 1 || networkId === 4 ? ( */}
+              <>
+                {/* <Link
                     component={NavLink}
                     id="dash-nav"
                     to="/dashboard"
@@ -93,24 +94,24 @@ function NavContent() {
                       <SvgIcon color="primary" component={DashboardIcon} />
                       <Trans>Dashboard</Trans>
                     </Typography>
-                  </Link>
+                  </Link> */}
 
-                  <Link
-                    component={NavLink}
-                    id="stake-nav"
-                    to="/"
-                    isActive={(match, location) => {
-                      return checkPage(match, location, "stake");
-                    }}
-                    className={`button-dapp-menu ${isActive ? "active" : ""}`}
-                  >
-                    <Typography variant="h6">
-                      <SvgIcon color="primary" component={StakeIcon} />
-                      <Trans>Stake</Trans>
-                    </Typography>
-                  </Link>
+                <Link
+                  component={NavLink}
+                  id="stake-nav"
+                  to="/"
+                  isActive={(match, location) => {
+                    return checkPage(match, location, "stake");
+                  }}
+                  className={`button-dapp-menu ${isActive ? "active" : ""}`}
+                >
+                  <Typography variant="h6">
+                    <SvgIcon color="primary" component={StakeIcon} />
+                    <Trans>Stake</Trans>
+                  </Typography>
+                </Link>
 
-                  <Link
+                {/* <Link
                     component={NavLink}
                     id="wrap-nav"
                     to="/wrap"
@@ -121,13 +122,12 @@ function NavContent() {
                   >
                     <Box display="flex" alignItems="center">
                       <SvgIcon component={WrapIcon} color="primary" viewBox="1 0 20 22" />
-                      {/* <WrapIcon /> */}
-                      <Typography variant="h6">Wrap</Typography>
-                      {/* <SvgIcon component={WrapIcon} viewBox="21 -2 20 20" style={{ width: "80px" }} /> */}
-                    </Box>
-                  </Link>
 
-                  <Link
+                      <Typography variant="h6">Wrap</Typography>
+                    </Box>
+                  </Link> */}
+
+                {/* <Link
                     href={"https://synapseprotocol.com/?inputCurrency=gOHM&outputCurrency=gOHM&outputChain=43114"}
                     target="_blank"
                   >
@@ -136,59 +136,59 @@ function NavContent() {
                       <Trans>Bridge</Trans>
                       <SvgIcon style={{ marginLeft: "5px" }} component={ArrowUpIcon} />
                     </Typography>
-                  </Link>
+                  </Link> */}
 
-                  <Link
-                    component={NavLink}
-                    id="bond-nav"
-                    to="/bonds"
-                    isActive={(match, location) => {
-                      return checkPage(match, location, "bonds");
-                    }}
-                    className={`button-dapp-menu ${isActive ? "active" : ""}`}
-                  >
-                    <Typography variant="h6">
-                      <SvgIcon color="primary" component={BondIcon} />
-                      <Trans>Bond</Trans>
+                <Link
+                  component={NavLink}
+                  id="bond-nav"
+                  to="/bonds"
+                  isActive={(match, location) => {
+                    return checkPage(match, location, "bonds");
+                  }}
+                  className={`button-dapp-menu ${isActive ? "active" : ""}`}
+                >
+                  <Typography variant="h6">
+                    <SvgIcon color="primary" component={BondIcon} />
+                    <Trans>Bond</Trans>
+                  </Typography>
+                </Link>
+
+                <div className="dapp-menu-data discounts">
+                  <div className="bond-discounts">
+                    <Typography variant="body2">
+                      <Trans>Bond discounts</Trans>
                     </Typography>
-                  </Link>
+                    {bonds.map((bond, i) => {
+                      // NOTE (appleseed): temporary for ONHOLD MIGRATION
+                      // if (bond.getBondability(networkId)) {
+                      if (bond.getBondability(networkId) || bond.getLOLability(networkId)) {
+                        return (
+                          <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className={"bond"}>
+                            {!bond.bondDiscount ? (
+                              <Skeleton variant="text" width={"150px"} />
+                            ) : (
+                              <Typography variant="body2">
+                                {bond.displayName}
 
-                  <div className="dapp-menu-data discounts">
-                    <div className="bond-discounts">
-                      <Typography variant="body2">
-                        <Trans>Bond discounts</Trans>
-                      </Typography>
-                      {bonds.map((bond, i) => {
-                        // NOTE (appleseed): temporary for ONHOLD MIGRATION
-                        // if (bond.getBondability(networkId)) {
-                        if (bond.getBondability(networkId) || bond.getLOLability(networkId)) {
-                          return (
-                            <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className={"bond"}>
-                              {!bond.bondDiscount ? (
-                                <Skeleton variant="text" width={"150px"} />
-                              ) : (
-                                <Typography variant="body2">
-                                  {bond.displayName}
-
-                                  <span className="bond-pair-roi">
-                                    {bond.isLOLable[networkId]
-                                      ? "--"
-                                      : !bond.isBondable[networkId]
-                                      ? "Sold Out"
-                                      : `${bond.bondDiscount && trim(bond.bondDiscount * 100, 2)}%`}
-                                    {/* {!bond.isBondable[networkId]
+                                <span className="bond-pair-roi">
+                                  {bond.isLOLable[networkId]
+                                    ? "--"
+                                    : !bond.isBondable[networkId]
+                                    ? "Sold Out"
+                                    : `${bond.bondDiscount && trim(bond.bondDiscount * 100, 2)}%`}
+                                  {/* {!bond.isBondable[networkId]
                                       ? "Sold Out"
                                       : `${bond.bondDiscount && trim(bond.bondDiscount * 100, 2)}%`} */}
-                                  </span>
-                                </Typography>
-                              )}
-                            </Link>
-                          );
-                        }
-                      })}
-                    </div>
+                                </span>
+                              </Typography>
+                            )}
+                          </Link>
+                        );
+                      }
+                    })}
                   </div>
-                  <Box className="menu-divider">
+                </div>
+                {/* <Box className="menu-divider">
                     <Divider />
                   </Box>
                   <Link
@@ -220,42 +220,41 @@ function NavContent() {
                       <SvgIcon color="primary" component={PoolTogetherIcon} />
                       3,3 Together
                     </Typography>
-                  </Link>
-                  <Box className="menu-divider">
-                    <Divider />
-                  </Box>
-                </>
-              ) : (
-                <>
-                  <Link
-                    component={NavLink}
-                    id="wrap-nav"
-                    to="/wrap"
-                    isActive={(match, location) => {
-                      return checkPage(match, location, "wrap");
-                    }}
-                    className={`button-dapp-menu ${isActive ? "active" : ""}`}
-                  >
-                    <Box display="flex" alignItems="center">
-                      <SvgIcon component={WrapIcon} color="primary" viewBox="1 0 20 22" />
-                      {/* <WrapIcon /> */}
-                      <Typography variant="h6">Wrap</Typography>
-                      {/* <SvgIcon component={WrapIcon} viewBox="21 -2 20 20" style={{ width: "80px" }} /> */}
-                    </Box>
-                  </Link>
+                  </Link>*/}
+                <Box className="menu-divider">
+                  <Divider />
+                </Box>
+              </>
+              {/* ) : (
+              <>
+                <Link
+                  component={NavLink}
+                  id="wrap-nav"
+                  to="/wrap"
+                  isActive={(match, location) => {
+                    return checkPage(match, location, "wrap");
+                  }}
+                  className={`button-dapp-menu ${isActive ? "active" : ""}`}
+                >
+                  <Box display="flex" alignItems="center">
+                    <SvgIcon component={WrapIcon} color="primary" viewBox="1 0 20 22" />
 
-                  <Link
-                    href={"https://synapseprotocol.com/?inputCurrency=gOHM&outputCurrency=gOHM&outputChain=43114"}
-                    target="_blank"
-                  >
-                    <Typography variant="h6">
-                      <BridgeIcon />
-                      <Trans>Bridge</Trans>
-                      <SvgIcon style={{ marginLeft: "5px" }} component={ArrowUpIcon} />
-                    </Typography>
-                  </Link>
-                </>
-              )}
+                    <Typography variant="h6">Wrap</Typography>
+                  </Box>
+                </Link>
+
+                <Link
+                  href={"https://synapseprotocol.com/?inputCurrency=gOHM&outputCurrency=gOHM&outputChain=43114"}
+                  target="_blank"
+                >
+                  <Typography variant="h6">
+                    <BridgeIcon />
+                    <Trans>Bridge</Trans>
+                    <SvgIcon style={{ marginLeft: "5px" }} component={ArrowUpIcon} />
+                  </Typography>
+                </Link>
+              </>
+              ) } */}
             </div>
           </div>
         </div>
