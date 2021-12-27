@@ -140,7 +140,7 @@ function App() {
   const loadAccount = useCallback(
     loadProvider => {
       dispatch(loadAccountDetails({ networkID: networkId, address, provider: loadProvider }));
-      dispatch(getMigrationAllowances({ address, provider: loadProvider, networkID: networkId }));
+      // dispatch(getMigrationAllowances({ address, provider: loadProvider, networkID: networkId }));
       bonds.map(bond => {
         // NOTE: get any Claimable bonds, they may not be bondable
         if (bond.getClaimability(networkId)) {

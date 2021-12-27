@@ -204,9 +204,8 @@ export const loadAccountDetails = createAsyncThunk(
     let gOhmUnwrapAllowance = BigNumber.from("0");
     let poolAllowance = BigNumber.from("0");
     try {
-      const gOhmContract = GOHM__factory.connect(addresses[networkID].GOHM_ADDRESS, provider);
-      gOhmUnwrapAllowance = await gOhmContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
-
+      // const gOhmContract = GOHM__factory.connect(addresses[networkID].GOHM_ADDRESS, provider);
+      // gOhmUnwrapAllowance = await gOhmContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
       const ohmContract = new ethers.Contract(
         addresses[networkID].OHM_ADDRESS as string,
         ierc20Abi,
@@ -222,7 +221,7 @@ export const loadAccountDetails = createAsyncThunk(
       const wsohmContract = new ethers.Contract(addresses[networkID].WSOHM_ADDRESS as string, wsOHM, provider) as WsOHM;
       unwrapAllowance = await wsohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
     } catch (e) {
-      console.warn("failed contract calls in slice", e);
+      console.warn("failed contract calls in slice", networkID, e); // ???
     }
     await dispatch(getBalances({ address, networkID, provider }));
 
@@ -234,7 +233,7 @@ export const loadAccountDetails = createAsyncThunk(
       wrapping: {
         ohmWrap: Number(ethers.utils.formatUnits(wrapAllowance, "gwei")),
         ohmUnwrap: Number(ethers.utils.formatUnits(unwrapAllowance, "gwei")),
-        gOhmUnwrap: Number(ethers.utils.formatUnits(gOhmUnwrapAllowance, "ether")),
+        // gOhmUnwrap: Number(ethers.utils.formatUnits(gOhmUnwrapAllowance, "ether")),
       },
     };
   },
