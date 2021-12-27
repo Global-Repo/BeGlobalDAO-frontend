@@ -2,6 +2,7 @@ import { minutesAgo } from "./index";
 import { EnvHelper } from "./Environment";
 import { ethers } from "ethers";
 import { StaticJsonRpcProvider } from "@ethersproject/providers";
+import { NETWORK_IDS } from "../constants";
 
 interface ICurrentStats {
   failedConnectionCount: number;
@@ -124,7 +125,7 @@ export class NodeHelper {
    * @returns StaticJsonRpcProvider for querying
    */
   static getMainnetStaticProvider = () => {
-    return new StaticJsonRpcProvider(NodeHelper.getMainnetURI(1));
+    return new StaticJsonRpcProvider(NodeHelper.getMainnetURI(NETWORK_IDS.BSC));
   };
 
   /**

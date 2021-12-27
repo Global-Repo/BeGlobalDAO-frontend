@@ -5,6 +5,11 @@ import bsc from "./assets/BSC.svg";
 import arbitrum from "./assets/arbitrum.png";
 import avalanche from "./assets/tokens/AVAX.svg";
 
+export const NETWORK_IDS = {
+  BSC: 56,
+  BSC_TESTNET: 97,
+};
+
 export const THE_GRAPH_URL = "https://api.thegraph.com/subgraphs/name/drondin/olympus-protocol-metrics";
 export const EPOCH_INTERVAL = 2200;
 
@@ -188,7 +193,7 @@ interface INetwork {
 
 // These networks will be available for users to select. Other networks may be functional
 // (e.g. testnets, or mainnets being prepared for launch) but need to be selected directly via the wallet.
-export const USER_SELECTABLE_NETWORKS = [97];
+export const USER_SELECTABLE_NETWORKS = [97]; // ??? TODO
 
 // Set this to the chain number of the most recently added network in order to enable the 'Now supporting X network'
 // message in the UI. Set to -1 if we don't want to display the message at the current time.

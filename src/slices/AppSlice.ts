@@ -9,6 +9,7 @@ import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit"
 import { RootState } from "src/store";
 import { IBaseAsyncThunk } from "./interfaces";
 import { OlympusStakingv2, SOhmv2 } from "../typechain";
+import { NETWORK_IDS } from "../constants";
 
 interface IProtocolMetrics {
   readonly timestamp: string;
@@ -48,9 +49,9 @@ export const loadAppDetails = createAsyncThunk(
       }
     `;
 
-    if (networkID !== 56) {
+    if (networkID !== NETWORK_IDS.BSC) {
       provider = NodeHelper.getMainnetStaticProvider();
-      networkID = 56;
+      networkID = NETWORK_IDS.BSC;
     }
     const graphData = await apollo<{ protocolMetrics: IProtocolMetrics[] }>(protocolMetricsQuery);
 
