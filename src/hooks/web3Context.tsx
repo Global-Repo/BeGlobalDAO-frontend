@@ -109,7 +109,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
         setChainChanged(true);
       });
 
-      rawProvider.on("networkChanged", async () => {
+      rawProvider.on("chainChanged", async () => {
         setChainChanged(true);
       });
     },
