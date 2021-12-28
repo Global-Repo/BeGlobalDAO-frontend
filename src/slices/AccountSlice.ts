@@ -297,6 +297,7 @@ export const calculateUserBondDetails = createAsyncThunk(
       bond: bond.name,
       displayName: bond.displayName,
       bondIconSvg: bond.bondIconSvg,
+      bondIconViewBox: bond.bondIconViewBox,
       isLP: bond.isLP,
       allowance: Number(allowance.toString()),
       balance: balanceVal,
