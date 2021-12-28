@@ -1,4 +1,4 @@
-import { StableBond, LPBond, NetworkID, CustomBond, BondType } from "src/lib/Bond";
+import { StableBond, Bond, LPBond, NetworkID, CustomBond, BondType } from "src/lib/Bond";
 import { addresses } from "src/constants";
 
 import { ReactComponent as DaiImg } from "src/assets/tokens/DAI.svg";
@@ -15,6 +15,9 @@ import { abi as FraxOhmBondContract } from "src/abi/bonds/OhmFraxContract.json";
 import { abi as BondOhmDaiContract } from "src/abi/bonds/OhmDaiContract.json";
 import { abi as BondOhmLusdContract } from "src/abi/bonds/OhmLusdContract.json";
 import { abi as BondOhmEthContract } from "src/abi/bonds/OhmEthContract.json";
+
+import { abi as GlobalDAOBondDepository } from "src/abi/bonds/GlobalDAOBondDepository.json";
+import { abi as GlbdBusdLp } from "src/abi/reserves/GlbdBusdLp.json";
 
 import { abi as DaiBondContract } from "src/abi/bonds/DaiContract.json";
 import { abi as ReserveOhmLusdContract } from "src/abi/reserves/OhmLusd.json";
@@ -551,13 +554,108 @@ export const ohm_weth = new CustomBond({
   },
 });
 
+////
+
+export const busd = new StableBond({
+  name: "busd",
+  displayName: "BUSD",
+  bondToken: "BUSD",
+  payoutToken: "GLBD",
+  bondIconSvg: DaiImg, // ???
+  bondContractABI: GlobalDAOBondDepository, // Bond BUSD Contract
+  isBondable: {
+    [NetworkID.Mainnet]: false,
+    [NetworkID.Testnet]: true,
+    [NetworkID.Arbitrum]: false,
+    [NetworkID.ArbitrumTestnet]: false,
+    [NetworkID.Avalanche]: false,
+    [NetworkID.AvalancheTestnet]: false,
+  },
+  isLOLable: {
+    [NetworkID.Mainnet]: true,
+    [NetworkID.Testnet]: false,
+    [NetworkID.Arbitrum]: false,
+    [NetworkID.ArbitrumTestnet]: false,
+    [NetworkID.Avalanche]: false,
+    [NetworkID.AvalancheTestnet]: false,
+  },
+  LOLmessage: "Sold Out",
+  isClaimable: {
+    [NetworkID.Mainnet]: true,
+    [NetworkID.Testnet]: true,
+    [NetworkID.Arbitrum]: false,
+    [NetworkID.ArbitrumTestnet]: false,
+    [NetworkID.Avalanche]: false,
+    [NetworkID.AvalancheTestnet]: false,
+  },
+  networkAddrs: {
+    [NetworkID.Mainnet]: {
+      bondAddress: "",
+      reserveAddress: "",
+    },
+    [NetworkID.Testnet]: {
+      bondAddress: "0x08806D3070F7e48615136e89898042c1A8A07F15",
+      reserveAddress: "0x7B1A48dC01Be3Bf55AB6e145baEF5293F3158127", // BUSD
+    },
+  },
+});
+
+export const glbd_busd = new LPBond({
+  name: "glbd_busd_lp",
+  displayName: "GLBD_BUSD LP",
+  bondToken: "BUSD",
+  payoutToken: "GLBD",
+  bondIconSvg: OhmLusdImg, // ???
+  bondContractABI: GlobalDAOBondDepository, // GLBD-BUSD Bond Contract
+  reserveContract: GlbdBusdLp, // GLBD-BUSD LP Contract
+  isBondable: {
+    [NetworkID.Mainnet]: false,
+    [NetworkID.Testnet]: false,
+    [NetworkID.Arbitrum]: false,
+    [NetworkID.ArbitrumTestnet]: false,
+    [NetworkID.Avalanche]: false,
+    [NetworkID.AvalancheTestnet]: false,
+  },
+  isLOLable: {
+    [NetworkID.Mainnet]: false,
+    [NetworkID.Testnet]: false,
+    [NetworkID.Arbitrum]: false,
+    [NetworkID.ArbitrumTestnet]: false,
+    [NetworkID.Avalanche]: false,
+    [NetworkID.AvalancheTestnet]: false,
+  },
+  LOLmessage: "",
+  isClaimable: {
+    [NetworkID.Mainnet]: true,
+    [NetworkID.Testnet]: true,
+    [NetworkID.Arbitrum]: false,
+    [NetworkID.ArbitrumTestnet]: false,
+    [NetworkID.Avalanche]: false,
+    [NetworkID.AvalancheTestnet]: false,
+  },
+  networkAddrs: {
+    [NetworkID.Mainnet]: {
+      bondAddress: "",
+      reserveAddress: "",
+    },
+    [NetworkID.Testnet]: {
+      bondAddress: "0x045d7C7Fa5d8CE5abB4778acD46Bdd4159E511DE",
+      reserveAddress: "0xEBD19CAEeB198200B94826B561e43429a48c6d51", // GLBD - BUSD LP
+    },
+  },
+  lpUrl:
+    "https://app.sushi.com/add/0x383518188C0C6d7730D91b2c03a03C837814a899/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
+});
+
+////
+
 // HOW TO ADD A NEW BOND:
 // Is it a stableCoin bond? use `new StableBond`
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
-export const allBonds = [dai, frax, eth, cvx, ohm_dai, ohm_frax, lusd, ohm_lusd, ohm_weth];
+export const allBonds = [busd, glbd_busd];
 // TODO (appleseed-expiredBonds): there may be a smarter way to refactor this
-export const allExpiredBonds = [cvx_expired];
+export const allExpiredBonds: Bond[] = [];
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {
   return { ...prevVal, [bond.name]: bond };
 }, {});

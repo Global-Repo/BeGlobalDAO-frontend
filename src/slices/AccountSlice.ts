@@ -38,10 +38,13 @@ export const getBalances = createAsyncThunk(
     let poolBalance = BigNumber.from("0");
     let fsohmBalance = BigNumber.from(0);
     let fiatDaowsohmBalance = BigNumber.from("0");
+
+    /*
     try {
       const gOhmContract = GOHM__factory.connect(addresses[networkID].GOHM_ADDRESS, provider);
       gOhmBalance = await gOhmContract.balanceOf(address);
     } catch (e) {
+      console.log("1");
       handleContractError(e);
     }
     try {
@@ -50,8 +53,11 @@ export const getBalances = createAsyncThunk(
       // NOTE (appleseed): wsohmAsSohm is wsOHM given as a quantity of sOHM
       wsohmAsSohm = await wsohmContract.wOHMTosOHM(wsohmBalance);
     } catch (e) {
+      console.log("2");
       handleContractError(e);
     }
+    */
+
     try {
       const ohmContract = new ethers.Contract(
         addresses[networkID].OHM_ADDRESS as string,
@@ -72,6 +78,8 @@ export const getBalances = createAsyncThunk(
     } catch (e) {
       handleContractError(e);
     }
+
+    /*
     try {
       const poolTokenContract = new ethers.Contract(
         addresses[networkID].PT_TOKEN_ADDRESS as string,
@@ -80,8 +88,11 @@ export const getBalances = createAsyncThunk(
       ) as IERC20;
       poolBalance = await poolTokenContract.balanceOf(address);
     } catch (e) {
+      console.log("5");
       handleContractError(e);
     }
+    */
+
     try {
       for (const fuseAddressKey of ["FUSE_6_SOHM", "FUSE_18_SOHM", "FUSE_36_SOHM"]) {
         if (addresses[networkID][fuseAddressKey]) {
@@ -215,11 +226,11 @@ export const loadAccountDetails = createAsyncThunk(
 
       const sohmContract = new ethers.Contract(addresses[networkID].SOHM_ADDRESS as string, sOHMv2, provider) as SOhmv2;
       unstakeAllowance = await sohmContract.allowance(address, addresses[networkID].STAKING_ADDRESS);
-      poolAllowance = await sohmContract.allowance(address, addresses[networkID].PT_PRIZE_POOL_ADDRESS);
-      wrapAllowance = await sohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
+      // poolAllowance = await sohmContract.allowance(address, addresses[networkID].PT_PRIZE_POOL_ADDRESS);
+      // wrapAllowance = await sohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
 
-      const wsohmContract = new ethers.Contract(addresses[networkID].WSOHM_ADDRESS as string, wsOHM, provider) as WsOHM;
-      unwrapAllowance = await wsohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
+      // const wsohmContract = new ethers.Contract(addresses[networkID].WSOHM_ADDRESS as string, wsOHM, provider) as WsOHM;
+      // unwrapAllowance = await wsohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
     } catch (e) {
       console.warn("failed contract calls in slice", networkID, e); // ???
     }

@@ -1,0 +1,59 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "MintNotifier",
+  "sourceName": "contracts/Helpers/MintNotifier.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "vaultFor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "userFor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "GlobalsMinted",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_vaultFor",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_userFor",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "notify",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b5060e78061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063e718851d14602d575b600080fd5b606060048036036060811015604157600080fd5b506001600160a01b038135811691602081013590911690604001356062565b005b604080516001600160a01b0380861682528416602082015280820183905290517f438124e5fe04b1b441d58c29e3387583632b1faca48a8be0e3fe969e8b7ba83a9181900360600190a150505056fea26469706673582212200c95b9e641f5945da923cba96a3a1024f207f6dc7901ddc374803ef68420dad464736f6c634300060c0033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063e718851d14602d575b600080fd5b606060048036036060811015604157600080fd5b506001600160a01b038135811691602081013590911690604001356062565b005b604080516001600160a01b0380861682528416602082015280820183905290517f438124e5fe04b1b441d58c29e3387583632b1faca48a8be0e3fe969e8b7ba83a9181900360600190a150505056fea26469706673582212200c95b9e641f5945da923cba96a3a1024f207f6dc7901ddc374803ef68420dad464736f6c634300060c0033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
