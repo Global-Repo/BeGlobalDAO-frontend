@@ -93,9 +93,16 @@ function OhmMenu() {
       onMouseLeave={e => handleClick(e)}
       id="ohm-menu-button-hover"
     >
-      <Button id="ohm-menu-button" size="large" variant="contained" color="secondary" title="OHM" aria-describedby={id}>
+      <Button
+        id="ohm-menu-button"
+        size="large"
+        variant="contained"
+        color="secondary"
+        title="GLBD"
+        aria-describedby={id}
+      >
         <SvgIcon component={InfoIcon} color="primary" />
-        <Typography className="ohm-menu-button-text">OHM</Typography>
+        <Typography className="ohm-menu-button-text">GLBD</Typography>
       </Button>
 
       <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom-start" transition>
@@ -129,12 +136,6 @@ function OhmMenu() {
                       </Typography>
                     </Button>
                   </Link>
-
-                  <Link component={NavLink} to="/wrap" style={{ textDecoration: "none" }}>
-                    <Button size="large" variant="contained" color="secondary" fullWidth>
-                      <Typography align="left">Wrap sOHM</Typography>
-                    </Button>
-                  </Link>
                 </Box>
 
                 <Box component="div" className="data-links">
@@ -166,7 +167,7 @@ function OhmMenu() {
                             viewBox="0 0 32 32"
                             style={{ height: "25px", width: "25px" }}
                           />
-                          <Typography variant="body1">OHM</Typography>
+                          <Typography variant="body1">GLBD</Typography>
                         </Button>
                       )}
                       {SOHM_ADDRESS && (
@@ -180,7 +181,7 @@ function OhmMenu() {
                             viewBox="0 0 100 100"
                             style={{ height: "25px", width: "25px" }}
                           />
-                          <Typography variant="body1">sOHM</Typography>
+                          <Typography variant="body1">sGLBD</Typography>
                         </Button>
                       )}
                       {GOHM_ADDRESS && (
@@ -194,7 +195,7 @@ function OhmMenu() {
                             viewBox="0 0 180 180"
                             style={{ height: "25px", width: "25px" }}
                           />
-                          <Typography variant="body1">gOHM</Typography>
+                          <Typography variant="body1">gGLBD</Typography>
                         </Button>
                       )}
                       {PT_TOKEN_ADDRESS && (
