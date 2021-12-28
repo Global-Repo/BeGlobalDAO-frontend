@@ -54,6 +54,7 @@ interface BondOpts {
   LOLmessage: string; // aka isBondable => set false to hide
   isClaimable: Available; // set false to hide
   bondIconSvg: React.ReactNode; //  SVG path for icons
+  bondIconViewBox?: string; // SVG viewbox
   bondContractABI: ethers.ContractInterface; // ABI for contract
   networkAddrs: NetworkAddresses; // Mapping of network --> Addresses
   bondToken: string; // Unused, but native token to buy the bond.
@@ -72,6 +73,7 @@ export abstract class Bond {
   readonly isClaimable: Available;
   readonly type: BondType;
   readonly bondIconSvg: React.ReactNode;
+  readonly bondIconViewBox: string;
   readonly bondContractABI: ethers.ContractInterface; // Bond ABI
   readonly networkAddrs: NetworkAddresses;
   readonly bondToken: string;
@@ -95,6 +97,7 @@ export abstract class Bond {
     this.type = type;
     this.isClaimable = bondOpts.isClaimable;
     this.bondIconSvg = bondOpts.bondIconSvg;
+    this.bondIconViewBox = bondOpts.bondIconViewBox || "0 0 32 32";
     this.bondContractABI = bondOpts.bondContractABI;
     this.networkAddrs = bondOpts.networkAddrs;
     this.bondToken = bondOpts.bondToken;

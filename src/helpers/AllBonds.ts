@@ -564,6 +564,7 @@ export const busd = new StableBond({
   bondToken: "BUSD",
   payoutToken: "GLBD",
   bondIconSvg: BusdImg,
+  bondIconViewBox: "0 0 96 96",
   bondContractABI: GlobalDAOBondDepository, // Bond BUSD Contract
   isBondable: {
     [NetworkID.Mainnet]: false,
@@ -608,6 +609,7 @@ export const glbd_busd = new LPBond({
   bondToken: "BUSD",
   payoutToken: "GLBD",
   bondIconSvg: GlbdImg,
+  bondIconViewBox: "0 0 263 243",
   bondContractABI: GlobalDAOBondDepository, // GLBD-BUSD Bond Contract
   reserveContract: GlbdBusdLp, // GLBD-BUSD LP Contract
   isBondable: {
