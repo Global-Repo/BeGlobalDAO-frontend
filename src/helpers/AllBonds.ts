@@ -593,8 +593,8 @@ export const busd = new StableBond({
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "",
-      reserveAddress: "",
+      bondAddress: "0x71Dc3DBcC554EfA890EE69e9F792cE90DB4829BF",
+      reserveAddress: "0xeD0392005e7bB9A798CBbC4f70919302290b5760",
     },
     [NetworkID.Testnet]: {
       bondAddress: "0x69E055B2bCE8fecC41aFd388A9131133cC23505D",
@@ -639,8 +639,8 @@ export const glbd_busd = new LPBond({
   },
   networkAddrs: {
     [NetworkID.Mainnet]: {
-      bondAddress: "",
-      reserveAddress: "",
+      bondAddress: "0x20fB045Fd32e26fdF25C1Aa706B742DeCBc5a1a5",
+      reserveAddress: "0x60F0ab11422439E90f52Ba55Bd63C96A75E9a93f",
     },
     [NetworkID.Testnet]: {
       bondAddress: "0x4d04127251d5A8Ef87362402f83109980F8F8c71",
