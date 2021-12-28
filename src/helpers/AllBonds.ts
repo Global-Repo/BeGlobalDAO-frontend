@@ -610,14 +610,14 @@ export const glbd_busd = new LPBond({
   reserveContract: GlbdBusdLp, // GLBD-BUSD LP Contract
   isBondable: {
     [NetworkID.Mainnet]: false,
-    [NetworkID.Testnet]: false,
+    [NetworkID.Testnet]: true,
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,
     [NetworkID.Avalanche]: false,
     [NetworkID.AvalancheTestnet]: false,
   },
   isLOLable: {
-    [NetworkID.Mainnet]: false,
+    [NetworkID.Mainnet]: true,
     [NetworkID.Testnet]: false,
     [NetworkID.Arbitrum]: false,
     [NetworkID.ArbitrumTestnet]: false,

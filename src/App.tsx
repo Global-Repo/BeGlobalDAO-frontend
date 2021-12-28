@@ -31,6 +31,7 @@ import "./style.scss";
 import { useGoogleAnalytics } from "./hooks/useGoogleAnalytics";
 import { initializeNetwork } from "./slices/NetworkSlice";
 import { useAppSelector } from "./hooks";
+import { NETWORK_IDS } from "./constants";
 
 // 😬 Sorry for all the console logging
 const DEBUG = false;
@@ -128,7 +129,7 @@ function App() {
     loadProvider => {
       dispatch(loadAppDetails({ networkID: networkId, provider: loadProvider }));
       // NOTE (appleseed) - tech debt - better network filtering for active bonds
-      if (networkId === 1 || networkId === 4) {
+      if (networkId === NETWORK_IDS.BSC || networkId === NETWORK_IDS.BSC_TESTNET) {
         bonds.map(bond => {
           dispatch(calcBondDetails({ bond, value: "", provider: loadProvider, networkID: networkId }));
         });
