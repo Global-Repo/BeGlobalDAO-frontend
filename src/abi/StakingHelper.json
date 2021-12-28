@@ -2,21 +2,46 @@
   "abi": [
     {
       "inputs": [
-        { "internalType": "address", "name": "_staking", "type": "address" },
-        { "internalType": "address", "name": "_OHM", "type": "address" }
+        {
+          "internalType": "address",
+          "name": "_staking",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_GLBD",
+          "type": "address"
+        }
       ],
       "stateMutability": "nonpayable",
       "type": "constructor"
     },
     {
       "inputs": [],
-      "name": "OHM",
-      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "name": "GLBD",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
       "stateMutability": "view",
       "type": "function"
     },
     {
-      "inputs": [{ "internalType": "uint256", "name": "_amount", "type": "uint256" }],
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_recipient",
+          "type": "address"
+        }
+      ],
       "name": "stake",
       "outputs": [],
       "stateMutability": "nonpayable",
@@ -25,7 +50,13 @@
     {
       "inputs": [],
       "name": "staking",
-      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
       "stateMutability": "view",
       "type": "function"
     }
