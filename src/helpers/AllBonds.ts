@@ -10,6 +10,8 @@ import { ReactComponent as OhmEthImg } from "src/assets/tokens/OHM-WETH.svg";
 import { ReactComponent as wETHImg } from "src/assets/tokens/wETH.svg";
 import { ReactComponent as LusdImg } from "src/assets/tokens/LUSD.svg";
 import { ReactComponent as CvxImg } from "src/assets/tokens/CVX.svg";
+import { ReactComponent as BusdImg } from "src/assets/tokens/BUSD.svg";
+import { ReactComponent as GlbdImg } from "src/assets/tokens/GLBD.svg";
 
 import { abi as FraxOhmBondContract } from "src/abi/bonds/OhmFraxContract.json";
 import { abi as BondOhmDaiContract } from "src/abi/bonds/OhmDaiContract.json";
@@ -561,7 +563,7 @@ export const busd = new StableBond({
   displayName: "BUSD",
   bondToken: "BUSD",
   payoutToken: "GLBD",
-  bondIconSvg: DaiImg, // ???
+  bondIconSvg: BusdImg,
   bondContractABI: GlobalDAOBondDepository, // Bond BUSD Contract
   isBondable: {
     [NetworkID.Mainnet]: false,
@@ -605,7 +607,7 @@ export const glbd_busd = new LPBond({
   displayName: "GLBD_BUSD LP",
   bondToken: "BUSD",
   payoutToken: "GLBD",
-  bondIconSvg: OhmLusdImg, // ???
+  bondIconSvg: GlbdImg,
   bondContractABI: GlobalDAOBondDepository, // GLBD-BUSD Bond Contract
   reserveContract: GlbdBusdLp, // GLBD-BUSD LP Contract
   isBondable: {
