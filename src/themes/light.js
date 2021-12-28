@@ -210,7 +210,7 @@ export const light = responsiveFontSizes(
             backgroundColor: lightTheme.primaryButtonBG,
             "&:hover": {
               backgroundColor: lightTheme.primaryButtonHoverBG,
-              color: lightTheme.primaryButtonHoverColor,
+              color: lightTheme.primaryButtonColor,
             },
             "@media (hover:none)": {
               color: lightTheme.color,
@@ -240,7 +240,7 @@ export const light = responsiveFontSizes(
             color: lightTheme.primaryButtonBG,
             borderColor: lightTheme.primaryButtonBG,
             "&:hover": {
-              color: lightTheme.bgRed,
+              color: lightTheme.primaryButtonColor,
               backgroundColor: lightTheme.primaryButtonHoverBG,
               borderColor: lightTheme.primaryButtonBG,
             },
