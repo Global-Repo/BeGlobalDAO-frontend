@@ -5,11 +5,13 @@ import { abi as sOHMv2 } from "../abi/sOhmv2.json";
 import { setAll, getTokenPrice, getMarketPrice } from "../helpers";
 import { NodeHelper } from "src/helpers/NodeHelper";
 import apollo from "../lib/apolloClient";
-import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createSelector, createAsyncThunk, current } from "@reduxjs/toolkit";
 import { RootState } from "src/store";
 import { IBaseAsyncThunk } from "./interfaces";
 import { OlympusStakingv2, SOhmv2 } from "../typechain";
 import { NETWORK_IDS } from "../constants";
+
+const NUMBER_OF_REBASES_A_DAY = 2;
 
 interface IProtocolMetrics {
   readonly timestamp: string;
@@ -111,9 +113,8 @@ export const loadAppDetails = createAsyncThunk(
     const stakingReward = epoch.distribute;
     const circ = await sohmMainContract.circulatingSupply();
     const stakingRebase = Number(stakingReward.toString()) / Number(circ.toString());
-    const fiveDayRate = Math.pow(1 + stakingRebase, 5 * 3) - 1;
-    const stakingAPY = Math.pow(1 + stakingRebase, 365 * 3) - 1;
-
+    const fiveDayRate = Math.pow(1 + stakingRebase, 5 * NUMBER_OF_REBASES_A_DAY) - 1;
+    const stakingAPY = Math.pow(1 + stakingRebase, 365 * NUMBER_OF_REBASES_A_DAY) - 1;
     // Current index
     const currentIndex = await stakingContract.index();
     return {
