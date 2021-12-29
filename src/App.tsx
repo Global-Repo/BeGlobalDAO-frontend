@@ -240,10 +240,6 @@ function App() {
 
         <div className={`${classes.content} ${isSmallerScreen && classes.contentShift}`}>
           <Switch>
-            <Route exact path="/dashboard">
-              <TreasuryDashboard />
-            </Route>
-
             <Route exact path="/">
               <Redirect to="/stake" />
             </Route>
@@ -252,6 +248,11 @@ function App() {
               <Stake />
             </Route>
 
+            {/*
+            <Route exact path="/dashboard">
+              <TreasuryDashboard />
+            </Route>
+            
             <Route path="/wrap">
               <Route exact path={`/wrap`}>
                 <Wrap />
@@ -267,6 +268,7 @@ function App() {
             <Route path="/33-together">
               <PoolTogether />
             </Route>
+            */}
 
             <Route path="/bonds">
               {(bonds as IAllBondData[]).map(bond => {
