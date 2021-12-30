@@ -78,10 +78,10 @@ function OhmMenu() {
   const { address } = useWeb3Context();
   const networkId = useSelector(state => state.network.networkId);
 
-  const SOHM_ADDRESS = addresses[networkId] && addresses[networkId].SOHM_ADDRESS;
-  const OHM_ADDRESS = addresses[networkId] && addresses[networkId].OHM_ADDRESS;
+  const SGLBD_ADDRESS = addresses[networkId] && addresses[networkId].SGLBD_ADDRESS;
+  const GLBD_ADDRESS = addresses[networkId] && addresses[networkId].GLBD_ADDRESS;
   const PT_TOKEN_ADDRESS = addresses[networkId] && addresses[networkId].PT_TOKEN_ADDRESS;
-  const GOHM_ADDRESS = addresses[networkId] && addresses[networkId].GOHM_ADDRESS;
+  const GGLBD_ADDRESS = addresses[networkId] && addresses[networkId].GGLBD_ADDRESS;
 
   const handleClick = event => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -147,11 +147,11 @@ function OhmMenu() {
                       <Trans>ADD TOKEN TO WALLET</Trans>
                     </p>
                     <Box display="flex" flexDirection="row" justifyContent="space-between">
-                      {OHM_ADDRESS && (
+                      {GLBD_ADDRESS && (
                         <Button
                           variant="contained"
                           color="secondary"
-                          onClick={addTokenToWallet("GBLD", OHM_ADDRESS, address)}
+                          onClick={addTokenToWallet("GBLD", GLBD_ADDRESS, address)}
                         >
                           <SvgIcon
                             component={ohmTokenImg}
@@ -161,11 +161,11 @@ function OhmMenu() {
                           <Typography variant="body1">GLBD</Typography>
                         </Button>
                       )}
-                      {SOHM_ADDRESS && (
+                      {SGLBD_ADDRESS && (
                         <Button
                           variant="contained"
                           color="secondary"
-                          onClick={addTokenToWallet("sGBLD", SOHM_ADDRESS, address)}
+                          onClick={addTokenToWallet("sGBLD", SGLBD_ADDRESS, address)}
                         >
                           <SvgIcon
                             component={sOhmTokenImg}
@@ -175,11 +175,11 @@ function OhmMenu() {
                           <Typography variant="body1">sGLBD</Typography>
                         </Button>
                       )}
-                      {GOHM_ADDRESS && (
+                      {GGLBD_ADDRESS && (
                         <Button
                           variant="contained"
                           color="secondary"
-                          onClick={addTokenToWallet("gOHM", GOHM_ADDRESS, address)}
+                          onClick={addTokenToWallet("gOHM", GGLBD_ADDRESS, address)}
                         >
                           <SvgIcon
                             component={wsOhmTokenImg}

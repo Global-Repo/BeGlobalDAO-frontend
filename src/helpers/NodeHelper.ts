@@ -125,7 +125,7 @@ export class NodeHelper {
    * @returns StaticJsonRpcProvider for querying
    */
   static getMainnetStaticProvider = () => {
-    return new StaticJsonRpcProvider(NodeHelper.getMainnetURI(NETWORK_IDS.BSC));
+    return new StaticJsonRpcProvider(NodeHelper.getMainnetURI(NETWORK_IDS.BSC_TESTNET));
   };
 
   /**

@@ -1,14 +1,16 @@
 import { ethers } from "ethers";
 import { addresses } from "../constants";
 import { abi as OlympusStakingv2ABI } from "../abi/OlympusStakingv2.json";
+import { abi as GlobalDAOBondingCalculatorABI } from "../abi/GlobalDAOBondingCalculator.json";
 import { abi as sOHMv2 } from "../abi/sOhmv2.json";
 import { setAll, getTokenPrice, getMarketPrice } from "../helpers";
 import { NodeHelper } from "src/helpers/NodeHelper";
+import { glbd_busd } from "../helpers/AllBonds";
 import apollo from "../lib/apolloClient";
 import { createSlice, createSelector, createAsyncThunk, current } from "@reduxjs/toolkit";
 import { RootState } from "src/store";
 import { IBaseAsyncThunk } from "./interfaces";
-import { OlympusStakingv2, SOhmv2 } from "../typechain";
+import { OlympusStakingv2, SOhmv2, GlobalDAOBondingCalculator } from "../typechain";
 import { NETWORK_IDS } from "../constants";
 
 const NUMBER_OF_REBASES_A_DAY = 2;
@@ -53,7 +55,7 @@ export const loadAppDetails = createAsyncThunk(
 
     if (networkID !== NETWORK_IDS.BSC) {
       provider = NodeHelper.getMainnetStaticProvider();
-      networkID = NETWORK_IDS.BSC;
+      networkID = NETWORK_IDS.BSC_TESTNET;
     }
     const graphData = await apollo<{ protocolMetrics: IProtocolMetrics[] }>(protocolMetricsQuery);
 
@@ -103,7 +105,7 @@ export const loadAppDetails = createAsyncThunk(
     ) as OlympusStakingv2;
 
     const sohmMainContract = new ethers.Contract(
-      addresses[networkID].SOHM_ADDRESS as string,
+      addresses[networkID].SGLBD_ADDRESS as string,
       sOHMv2,
       provider,
     ) as SOhmv2;
@@ -115,6 +117,27 @@ export const loadAppDetails = createAsyncThunk(
     const stakingRebase = Number(stakingReward.toString()) / Number(circ.toString());
     const fiveDayRate = Math.pow(1 + stakingRebase, 5 * NUMBER_OF_REBASES_A_DAY) - 1;
     const stakingAPY = Math.pow(1 + stakingRebase, 365 * NUMBER_OF_REBASES_A_DAY) - 1;
+
+    console.log(`
+    stakingReward=${epoch.distribute}
+    circulatingSupply=${circ}
+    stakingRebase=${stakingRebase}
+    fiveDayRate=${fiveDayRate}
+    stakingAP=${stakingAPY}
+    `);
+
+    const calculatorContract = new ethers.Contract(
+      addresses[networkID].BONDINGCALC_ADDRESS as string,
+      GlobalDAOBondingCalculatorABI,
+      provider,
+    ) as GlobalDAOBondingCalculator;
+
+    // GLBD - BUSD LP
+    // @ts-ignore
+    const k = await calculatorContract.getKValue(glbd_busd.networkAddrs[networkID].reserveAddress);
+
+    console.log("k = ", k.toString()); // 2,000,000,000,000,000,000,000,000,000
+
     // Current index
     const currentIndex = await stakingContract.index();
     return {

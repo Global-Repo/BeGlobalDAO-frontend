@@ -41,14 +41,14 @@ export const getBalances = createAsyncThunk(
 
     /*
     try {
-      const gOhmContract = GOHM__factory.connect(addresses[networkID].GOHM_ADDRESS, provider);
+      const gOhmContract = GOHM__factory.connect(addresses[networkID].GGLBD_ADDRESS, provider);
       gOhmBalance = await gOhmContract.balanceOf(address);
     } catch (e) {
       console.log("1");
       handleContractError(e);
     }
     try {
-      const wsohmContract = new ethers.Contract(addresses[networkID].WSOHM_ADDRESS as string, wsOHM, provider) as WsOHM;
+      const wsohmContract = new ethers.Contract(addresses[networkID].WSGLBD_ADDRESS as string, wsOHM, provider) as WsOHM;
       wsohmBalance = await wsohmContract.balanceOf(address);
       // NOTE (appleseed): wsohmAsSohm is wsOHM given as a quantity of sOHM
       wsohmAsSohm = await wsohmContract.wOHMTosOHM(wsohmBalance);
@@ -60,7 +60,7 @@ export const getBalances = createAsyncThunk(
 
     try {
       const ohmContract = new ethers.Contract(
-        addresses[networkID].OHM_ADDRESS as string,
+        addresses[networkID].GLBD_ADDRESS as string,
         ierc20Abi,
         provider,
       ) as IERC20;
@@ -70,7 +70,7 @@ export const getBalances = createAsyncThunk(
     }
     try {
       const sohmContract = new ethers.Contract(
-        addresses[networkID].SOHM_ADDRESS as string,
+        addresses[networkID].SGLBD_ADDRESS as string,
         ierc20Abi,
         provider,
       ) as IERC20;
@@ -110,13 +110,13 @@ export const getBalances = createAsyncThunk(
       handleContractError(e);
     }
     try {
-      if (addresses[networkID].FIATDAO_WSOHM_ADDRESS) {
+      if (addresses[networkID].FIATDAO_WSGLBD_ADDRESS) {
         const fiatDaoContract = new ethers.Contract(
-          addresses[networkID].FIATDAO_WSOHM_ADDRESS as string,
+          addresses[networkID].FIATDAO_WSGLBD_ADDRESS as string,
           fiatDAO,
           provider,
         ) as FiatDAOContract;
-        fiatDaowsohmBalance = await fiatDaoContract.balanceOf(address, addresses[networkID].WSOHM_ADDRESS as string);
+        fiatDaowsohmBalance = await fiatDaoContract.balanceOf(address, addresses[networkID].WSGLBD_ADDRESS as string);
       }
     } catch (e) {
       handleContractError(e);
@@ -157,36 +157,36 @@ export const getMigrationAllowances = createAsyncThunk(
     let wsOhmAllowance = BigNumber.from(0);
     let gOhmAllowance = BigNumber.from(0);
 
-    if (addresses[networkID].OHM_ADDRESS) {
+    if (addresses[networkID].GLBD_ADDRESS) {
       try {
-        const ohmContract = IERC20__factory.connect(addresses[networkID].OHM_ADDRESS, provider);
+        const ohmContract = IERC20__factory.connect(addresses[networkID].GLBD_ADDRESS, provider);
         ohmAllowance = await ohmContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
       } catch (e) {
         handleContractError(e);
       }
     }
 
-    if (addresses[networkID].SOHM_ADDRESS) {
+    if (addresses[networkID].SGLBD_ADDRESS) {
       try {
-        const sOhmContract = IERC20__factory.connect(addresses[networkID].SOHM_ADDRESS, provider);
+        const sOhmContract = IERC20__factory.connect(addresses[networkID].SGLBD_ADDRESS, provider);
         sOhmAllowance = await sOhmContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
       } catch (e) {
         handleContractError(e);
       }
     }
 
-    if (addresses[networkID].WSOHM_ADDRESS) {
+    if (addresses[networkID].WSGLBD_ADDRESS) {
       try {
-        const wsOhmContract = IERC20__factory.connect(addresses[networkID].WSOHM_ADDRESS, provider);
+        const wsOhmContract = IERC20__factory.connect(addresses[networkID].WSGLBD_ADDRESS, provider);
         wsOhmAllowance = await wsOhmContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
       } catch (e) {
         handleContractError(e);
       }
     }
 
-    if (addresses[networkID].GOHM_ADDRESS) {
+    if (addresses[networkID].GGLBD_ADDRESS) {
       try {
-        const gOhmContract = IERC20__factory.connect(addresses[networkID].GOHM_ADDRESS, provider);
+        const gOhmContract = IERC20__factory.connect(addresses[networkID].GGLBD_ADDRESS, provider);
         gOhmAllowance = await gOhmContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
       } catch (e) {
         handleContractError(e);
@@ -215,22 +215,26 @@ export const loadAccountDetails = createAsyncThunk(
     let gOhmUnwrapAllowance = BigNumber.from("0");
     let poolAllowance = BigNumber.from("0");
     try {
-      // const gOhmContract = GOHM__factory.connect(addresses[networkID].GOHM_ADDRESS, provider);
+      // const gOhmContract = GOHM__factory.connect(addresses[networkID].GGLBD_ADDRESS, provider);
       // gOhmUnwrapAllowance = await gOhmContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
       const ohmContract = new ethers.Contract(
-        addresses[networkID].OHM_ADDRESS as string,
+        addresses[networkID].GLBD_ADDRESS as string,
         ierc20Abi,
         provider,
       ) as IERC20;
       stakeAllowance = await ohmContract.allowance(address, addresses[networkID].STAKING_HELPER_ADDRESS);
 
-      const sohmContract = new ethers.Contract(addresses[networkID].SOHM_ADDRESS as string, sOHMv2, provider) as SOhmv2;
+      const sohmContract = new ethers.Contract(
+        addresses[networkID].SGLBD_ADDRESS as string,
+        sOHMv2,
+        provider,
+      ) as SOhmv2;
       unstakeAllowance = await sohmContract.allowance(address, addresses[networkID].STAKING_ADDRESS);
       // poolAllowance = await sohmContract.allowance(address, addresses[networkID].PT_PRIZE_POOL_ADDRESS);
-      // wrapAllowance = await sohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
+      // wrapAllowance = await sohmContract.allowance(address, addresses[networkID].WSGLBD_ADDRESS);
 
-      // const wsohmContract = new ethers.Contract(addresses[networkID].WSOHM_ADDRESS as string, wsOHM, provider) as WsOHM;
-      // unwrapAllowance = await wsohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
+      // const wsohmContract = new ethers.Contract(addresses[networkID].WSGLBD_ADDRESS as string, wsOHM, provider) as WsOHM;
+      // unwrapAllowance = await wsohmContract.allowance(address, addresses[networkID].WSGLBD_ADDRESS);
     } catch (e) {
       console.warn("failed contract calls in slice", networkID, e); // ???
     }

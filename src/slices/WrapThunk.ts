@@ -27,26 +27,26 @@ export const changeApproval = createAsyncThunk(
     }
 
     const signer = provider.getSigner();
-    const sohmContract = new ethers.Contract(addresses[networkID].SOHM_ADDRESS as string, ierc20ABI, signer) as IERC20;
+    const sohmContract = new ethers.Contract(addresses[networkID].SGLBD_ADDRESS as string, ierc20ABI, signer) as IERC20;
     const wsohmContract = new ethers.Contract(
-      addresses[networkID].WSOHM_ADDRESS as string,
+      addresses[networkID].WSGLBD_ADDRESS as string,
       ierc20ABI,
       signer,
     ) as IERC20;
     let approveTx;
-    let wrapAllowance = await sohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
-    let unwrapAllowance = await wsohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
+    let wrapAllowance = await sohmContract.allowance(address, addresses[networkID].WSGLBD_ADDRESS);
+    let unwrapAllowance = await wsohmContract.allowance(address, addresses[networkID].WSGLBD_ADDRESS);
 
     try {
       if (token === "sohm") {
         // won't run if wrapAllowance > 0
         approveTx = await sohmContract.approve(
-          addresses[networkID].WSOHM_ADDRESS,
+          addresses[networkID].WSGLBD_ADDRESS,
           ethers.utils.parseUnits("1000000000", "gwei"),
         );
       } else if (token === "wsohm") {
         approveTx = await wsohmContract.approve(
-          addresses[networkID].WSOHM_ADDRESS,
+          addresses[networkID].WSGLBD_ADDRESS,
           ethers.utils.parseUnits("1000000000", "ether"),
         );
       }
@@ -68,8 +68,8 @@ export const changeApproval = createAsyncThunk(
     }
 
     // go get fresh allowances
-    wrapAllowance = await sohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
-    unwrapAllowance = await wsohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
+    wrapAllowance = await sohmContract.allowance(address, addresses[networkID].WSGLBD_ADDRESS);
+    unwrapAllowance = await wsohmContract.allowance(address, addresses[networkID].WSGLBD_ADDRESS);
 
     return dispatch(
       fetchAccountSuccess({
@@ -91,7 +91,7 @@ export const changeWrap = createAsyncThunk(
     }
 
     const signer = provider.getSigner();
-    const wsohmContract = new ethers.Contract(addresses[networkID].WSOHM_ADDRESS as string, wsOHM, signer) as WsOHM;
+    const wsohmContract = new ethers.Contract(addresses[networkID].WSGLBD_ADDRESS as string, wsOHM, signer) as WsOHM;
 
     let wrapTx;
     let uaData: IUAData = {
