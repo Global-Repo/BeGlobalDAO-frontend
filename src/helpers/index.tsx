@@ -8,7 +8,7 @@ import { SvgIcon } from "@material-ui/core";
 import { ReactComponent as OhmImg } from "../assets/tokens/token_OHM.svg";
 import { ReactComponent as SOhmImg } from "../assets/tokens/token_sOHM.svg";
 
-import { ohm_dai } from "./AllBonds";
+import { glbd_busd } from "./AllBonds";
 import { JsonRpcSigner, StaticJsonRpcProvider } from "@ethersproject/providers";
 import { IBaseAsyncThunk } from "src/slices/interfaces";
 import { PairContract, RedeemHelper } from "../typechain";
@@ -16,8 +16,8 @@ import { PairContract, RedeemHelper } from "../typechain";
 import { EnvHelper } from "../helpers/Environment";
 
 export async function getMarketPrice({ networkID, provider }: IBaseAsyncThunk) {
-  const ohm_dai_address = ohm_dai.getAddressForReserve(networkID);
-  const pairContract = new ethers.Contract(ohm_dai_address || "", PairContractABI, provider) as PairContract;
+  const glbd_busd_address = glbd_busd.getAddressForReserve(networkID);
+  const pairContract = new ethers.Contract(glbd_busd_address || "", PairContractABI, provider) as PairContract;
   const reserves = await pairContract.getReserves();
   const marketPrice = Number(reserves[1].toString()) / Number(reserves[0].toString());
 
