@@ -605,7 +605,7 @@ export const busd = new StableBond({
 
 export const glbd_busd = new LPBond({
   name: "glbd_busd_lp",
-  displayName: "GLBD_BUSD LP",
+  displayName: "GLBD-BUSD LP",
   bondToken: "BUSD",
   payoutToken: "GLBD",
   bondIconSvg: GlbdImg,
