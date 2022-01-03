@@ -26,7 +26,7 @@ export const OHMPrice = () => {
   return (
     <Metric
       className="metric price"
-      label={t`OHM Price`}
+      label={t`GLBD Price`}
       metric={marketPrice && formatCurrency(marketPrice, 2)}
       isLoading={marketPrice ? false : true}
       {...sharedProps}
@@ -54,7 +54,7 @@ export const BackingPerOHM = () => {
   return (
     <Metric
       className="metric bpo"
-      label={t`Backing per OHM`}
+      label={t`Backing per GLBD`}
       metric={!isNaN(backingPerOhm) && formatCurrency(backingPerOhm, 2)}
       isLoading={backingPerOhm ? false : true}
       {...sharedProps}
@@ -68,10 +68,10 @@ export const CurrentIndex = () => {
     <Metric
       className="metric index"
       label={t`Current Index`}
-      metric={currentIndex && trim(currentIndex, 2) + " sOHM"}
+      metric={currentIndex && trim(currentIndex, 2) + " sGLBD"}
       isLoading={currentIndex ? false : true}
       {...sharedProps}
-      tooltip="The current index tracks the amount of sOHM accumulated since the beginning of staking. Basically, how much sOHM one would have if they staked and held a single OHM from day 1."
+      tooltip="The current index tracks the amount of sGLBD accumulated since the beginning of staking. Basically, how much sGLBD one would have if they staked and held a single GLBD from day 1."
     />
   );
 };
@@ -81,11 +81,11 @@ export const WSOHMPrice = () => {
   return (
     <Metric
       className="metric wsoprice"
-      label={t`wsOHM Price`}
+      label={t`wsGLBD Price`}
       metric={wsOhmPrice && formatCurrency(wsOhmPrice, 2)}
       isLoading={wsOhmPrice ? false : true}
       {...sharedProps}
-      tooltip={`wsOHM = sOHM * index\n\nThe price of wsOHM is equal to the price of OHM multiplied by the current index`}
+      tooltip={`wsGLBD = sGLBD * index\n\nThe price of wsGLBD is equal to the price of GLBD multiplied by the current index`}
     />
   );
 };

@@ -382,7 +382,7 @@ function Wrap() {
                         Current Index
                       </Typography>
                       <Typography variant="h4">
-                        {currentIndex ? <>{trim(currentIndex, 1)} OHM</> : <Skeleton width="150px" />}
+                        {currentIndex ? <>{trim(currentIndex, 1)} GLBD</> : <Skeleton width="150px" />}
                       </Typography>
                     </div>
                   </Grid>
@@ -391,7 +391,7 @@ function Wrap() {
                       <Typography variant="h5" color="textSecondary">
                         {`${assetTo} Price`}
                         <InfoTooltip
-                          message={`${assetTo} = sOHM * index\n\nThe price of ${assetTo} is equal to the price of OHM multiplied by the current index`}
+                          message={`${assetTo} = sGLBD * index\n\nThe price of ${assetTo} is equal to the price of GLBD multiplied by the current index`}
                         />
                       </Typography>
                       <Typography variant="h4">
@@ -418,7 +418,7 @@ function Wrap() {
                       {isAvax ? (
                         <Box height="32px">
                           <Typography>
-                            Transform <b>wsOHM</b> to <b>gOHM</b>
+                            Transform <b>wsGLBD</b> to <b>gGLBD</b>
                           </Typography>
                         </Box>
                       ) : (
@@ -443,9 +443,9 @@ function Wrap() {
                               onChange={changeAssetFrom}
                               disableUnderline
                             >
-                              <MenuItem value={"sOHM"}>sOHM</MenuItem>
-                              <MenuItem value={"wsOHM"}> wsOHM</MenuItem>
-                              <MenuItem value={"gOHM"}>gOHM</MenuItem>
+                              <MenuItem value={"sOHM"}>sGLBD</MenuItem>
+                              <MenuItem value={"wsOHM"}> wsGLBD</MenuItem>
+                              <MenuItem value={"gOHM"}>gGLBD</MenuItem>
                             </Select>
                           </FormControl>
 
@@ -469,8 +469,8 @@ function Wrap() {
                               onChange={changeAssetTo}
                               disableUnderline
                             >
-                              <MenuItem value={"gOHM"}>gOHM</MenuItem>
-                              <MenuItem value={"sOHM"}>sOHM</MenuItem>
+                              <MenuItem value={"gOHM"}>gGLBD</MenuItem>
+                              <MenuItem value={"sOHM"}>sGLBD</MenuItem>
                             </Select>
                           </FormControl>
                         </>
@@ -495,28 +495,28 @@ function Wrap() {
                     {!isAvax ? (
                       <>
                         <div className="data-row">
-                          <Typography variant="body1">sOHM Balance</Typography>
+                          <Typography variant="body1">sGLBD Balance</Typography>
                           <Typography variant="body1">
-                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(sohmBalance, 4)} sOHM</>}
+                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(sohmBalance, 4)} sGLBD</>}
                           </Typography>
                         </div>
                         <div className="data-row">
-                          <Typography variant="body1">wsOHM Balance</Typography>
+                          <Typography variant="body1">wsGLBD Balance</Typography>
                           <Typography variant="body1">
-                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(wsohmBalance, 4)} wsOHM</>}
+                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(wsohmBalance, 4)} wsGLBD</>}
                           </Typography>
                         </div>
                         <div className="data-row">
-                          <Typography variant="body1">gOHM Balance</Typography>
+                          <Typography variant="body1">gGLBD Balance</Typography>
                           <Typography variant="body1">
-                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(gohmBalance, 4)} gOHM</>}
+                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(gohmBalance, 4)} gGLBD</>}
                           </Typography>
                         </div>
 
                         <Divider />
                         <Box width="100%" align="center" p={1}>
                           <Typography variant="body1" style={{ margin: "15px 0 10px 0" }}>
-                            Got wsOHM on Avalanche or Arbitrum? Click below to switch networks and migrate to gOHM (no
+                            Got wsGLBD on Avalanche or Arbitrum? Click below to switch networks and migrate to gOHM (no
                             bridge required!)
                           </Typography>
                           <Button
@@ -546,15 +546,15 @@ function Wrap() {
                     ) : (
                       <>
                         <div className="data-row">
-                          <Typography variant="body1">wsOHM Balance ({networkName})</Typography>
+                          <Typography variant="body1">wsGLBD Balance ({networkName})</Typography>
                           <Typography variant="body1">
-                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(wsohmBalance, 4)} wsOHM</>}
+                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(wsohmBalance, 4)} wsGLBD</>}
                           </Typography>
                         </div>
                         <div className="data-row">
-                          <Typography variant="body1">gOHM Balance ({networkName})</Typography>
+                          <Typography variant="body1">gGLBD Balance ({networkName})</Typography>
                           <Typography variant="body1">
-                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(gohmBalance, 4) + " gOHM"}</>}
+                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(gohmBalance, 4) + " gGLBD"}</>}
                           </Typography>
                         </div>
                         <Divider />
