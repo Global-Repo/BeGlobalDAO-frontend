@@ -1,13 +1,12 @@
-import { ethers } from "ethers";
+import { ethers, BigNumber } from "ethers";
 import { addresses } from "../constants";
 import { abi as OlympusStakingv2ABI } from "../abi/OlympusStakingv2.json";
 import { abi as GlobalDAOBondingCalculatorABI } from "../abi/GlobalDAOBondingCalculator.json";
 import { abi as sOHMv2 } from "../abi/sOhmv2.json";
 import { setAll, getTokenPrice, getMarketPrice } from "../helpers";
 import { NodeHelper } from "src/helpers/NodeHelper";
-import { glbd_busd } from "../helpers/AllBonds";
 import apollo from "../lib/apolloClient";
-import { createSlice, createSelector, createAsyncThunk, current } from "@reduxjs/toolkit";
+import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "src/store";
 import { IBaseAsyncThunk } from "./interfaces";
 import { OlympusStakingv2, SOhmv2, GlobalDAOBondingCalculator } from "../typechain";
@@ -64,7 +63,6 @@ export const loadAppDetails = createAsyncThunk(
       return;
     }
 
-    const stakingTVL = parseFloat(graphData.data.protocolMetrics[0].totalValueLocked);
     // NOTE (appleseed): marketPrice from Graph was delayed, so get CoinGecko price
     // const marketPrice = parseFloat(graphData.data.protocolMetrics[0].ohmPrice);
     let marketPrice;
@@ -79,21 +77,23 @@ export const loadAppDetails = createAsyncThunk(
       return;
     }
 
+    // const stakingTVL = parseFloat(graphData.data.protocolMetrics[0].totalValueLocked);
     const marketCap = parseFloat(graphData.data.protocolMetrics[0].marketCap);
     const circSupply = parseFloat(graphData.data.protocolMetrics[0].ohmCirculatingSupply);
     const totalSupply = parseFloat(graphData.data.protocolMetrics[0].totalSupply);
     const treasuryMarketValue = parseFloat(graphData.data.protocolMetrics[0].treasuryMarketValue);
+
     // const currentBlock = parseFloat(graphData.data._meta.block.number);
 
     if (!provider) {
       console.error("failed to connect to provider, please connect your wallet");
       return {
-        stakingTVL,
         marketPrice,
-        marketCap,
-        circSupply,
-        totalSupply,
-        treasuryMarketValue,
+        stakingTVL: 0, // ???
+        marketCap, // ???
+        circSupply, // ???
+        totalSupply, // ???
+        treasuryMarketValue, // ???
       } as IAppData;
     }
     const currentBlock = await provider.getBlockNumber();
@@ -114,29 +114,22 @@ export const loadAppDetails = createAsyncThunk(
     const epoch = await stakingContract.epoch();
     const stakingReward = epoch.distribute;
     const circ = await sohmMainContract.circulatingSupply();
+
     const stakingRebase = Number(stakingReward.toString()) / Number(circ.toString());
     const fiveDayRate = Math.pow(1 + stakingRebase, 5 * NUMBER_OF_REBASES_A_DAY) - 1;
     const stakingAPY = Math.pow(1 + stakingRebase, 365 * NUMBER_OF_REBASES_A_DAY) - 1;
 
-    console.log(`
-    stakingReward=${epoch.distribute}
-    circulatingSupply=${circ}
-    stakingRebase=${stakingRebase}
-    fiveDayRate=${fiveDayRate}
-    stakingAP=${stakingAPY}
-    `);
+    // TVL calc
+    const marketPriceBN = BigNumber.from((marketPrice * Math.pow(10, 9)).toFixed(0).toString());
+    const stakingTVL = Number(
+      circ.div(Math.pow(10, 9).toString()).mul(marketPriceBN).div(Math.pow(10, 9).toString()).toString(),
+    );
 
     const calculatorContract = new ethers.Contract(
       addresses[networkID].BONDINGCALC_ADDRESS as string,
       GlobalDAOBondingCalculatorABI,
       provider,
     ) as GlobalDAOBondingCalculator;
-
-    // GLBD - BUSD LP
-    // @ts-ignore
-    const k = await calculatorContract.getKValue(glbd_busd.networkAddrs[networkID].reserveAddress);
-
-    console.log("k = ", k.toString()); // 2,000,000,000,000,000,000,000,000,000
 
     // Current index
     const currentIndex = await stakingContract.index();
@@ -145,13 +138,13 @@ export const loadAppDetails = createAsyncThunk(
       currentBlock,
       fiveDayRate,
       stakingAPY,
-      stakingTVL,
-      stakingRebase,
-      marketCap,
       marketPrice,
-      circSupply,
-      totalSupply,
-      treasuryMarketValue,
+      stakingRebase,
+      stakingTVL, // ???
+      marketCap, // ???
+      circSupply, // ???
+      totalSupply, // ???
+      treasuryMarketValue, // ???
     } as IAppData;
   },
 );
@@ -196,8 +189,8 @@ export const findOrLoadMarketPrice = createAsyncThunk(
 );
 
 /**
- * - fetches the OHM price from CoinGecko (via getTokenPrice)
- * - falls back to fetch marketPrice from ohm-dai contract
+ * - fetches the GLBD price from CoinGecko (via getTokenPrice)
+ * - falls back to fetch marketPrice from GLBD-dai contract
  * - updates the App.slice when it runs
  */
 const loadMarketPrice = createAsyncThunk("app/loadMarketPrice", async ({ networkID, provider }: IBaseAsyncThunk) => {
