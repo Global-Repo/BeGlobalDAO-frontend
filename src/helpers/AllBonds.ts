@@ -597,8 +597,8 @@ export const busd = new StableBond({
       reserveAddress: "0xeD0392005e7bB9A798CBbC4f70919302290b5760",
     },
     [NetworkID.Testnet]: {
-      bondAddress: "0x121683568195A923c3D5e72C8533ef18aE767b65",
-      reserveAddress: "0xBE7Af7cbbe6cab7b6E7A0CC6A6025D7BdED2CdF4", // BUSD
+      bondAddress: "0xAA823266709ea6F0FDDe312F8bb958472471F0BB",
+      reserveAddress: "0xbD11Da7CbFEE17F16629df499D50a4f91753B864", // BUSD
     },
   },
 });
@@ -643,8 +643,8 @@ export const glbd_busd = new LPBond({
       reserveAddress: "0x60F0ab11422439E90f52Ba55Bd63C96A75E9a93f",
     },
     [NetworkID.Testnet]: {
-      bondAddress: "0xf1d79488A986CA28Ab5765f649991a1768fdEBA3",
-      reserveAddress: "0x534B734Dd9cc482eef8643cF32B0C33a0DF61A6D", // GLBD - BUSD LP
+      bondAddress: "0x726e3A9c2BFE1C8086349e589AcF1d748A41ec5c",
+      reserveAddress: "0x6a1893bcb867efa938c8878e754d23C7c14ceAe8", // GLBD - BUSD LP
     },
   },
   lpUrl:
