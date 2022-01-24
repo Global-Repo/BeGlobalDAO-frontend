@@ -1507,17 +1507,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.12.13", "@babel/runtime@^7.15.4":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.15.4", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.16.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.16.0.tgz#e27b977f2e2088ba24748bf99b5e1dece64e4f0b"
   integrity sha512-Nht8L0O8YCktmsDV6FqFue7vQLRx3Hb0B37lS5y0jDRqRxlBG4wIJHnf9/bgSE2UyipKFA01YtS+npRdTWBUyw==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
-  version "7.15.4"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
-  integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -2671,10 +2664,10 @@
     jest-validate "^26.5.2"
     lodash.get "^4.4.2"
 
-"@lingui/core@^3.12.1":
-  version "3.12.1"
-  resolved "https://registry.yarnpkg.com/@lingui/core/-/core-3.12.1.tgz#f657deb375521c1cf820f4f6a9ca422fdc1a276e"
-  integrity sha512-MkZgkaaBcFtmUXdck9YNMTMTwCRogUif8Ll4Wyqz0re2Ydo7fdwGFBkacYjOc787R5/UmZr2F21OtPqSbaoaJg==
+"@lingui/core@^3.13.1":
+  version "3.13.1"
+  resolved "https://registry.yarnpkg.com/@lingui/core/-/core-3.13.1.tgz#f0b5087089aa83e271fa1d6a134ec0069b4c6103"
+  integrity sha512-spzRJ/fca9Ddpns27Xmz2f9lgiesrvTZjcpOO2wKJq9QozF1qtv7n1bViQ1Erh2uFaO0kaEzUjkAYU3LtlP4PQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
     make-plural "^6.2.2"
@@ -2689,13 +2682,13 @@
     "@lingui/conf" "^3.12.1"
     ramda "^0.27.1"
 
-"@lingui/react@^3.12.1":
-  version "3.12.1"
-  resolved "https://registry.yarnpkg.com/@lingui/react/-/react-3.12.1.tgz#1134c71e1454652984e9f775b7bc28db083526e4"
-  integrity sha512-TM64Z3ZUsFRn2hz1svk2DRGZljzMY5peP0UurgbjqS2JnQOavFWJsAZmJDwUIEQCoqZI6pjYbjUlbKUdefpXzA==
+"@lingui/react@^3.13.1":
+  version "3.13.1"
+  resolved "https://registry.yarnpkg.com/@lingui/react/-/react-3.13.1.tgz#bf775c0f65365ceabffd9409d6b9b3a6140d5e66"
+  integrity sha512-gT1uaidhzvUfO0aLKYQyTevy+6LX5NLL3jH3e0yiQym68pNM519kTIg6v63zfG57T/oaPR9m4Sfs+BKnO7YJTQ==
   dependencies:
     "@babel/runtime" "^7.11.2"
-    "@lingui/core" "^3.12.1"
+    "@lingui/core" "^3.13.1"
 
 "@material-ui/core@^4.11.4":
   version "4.12.3"
